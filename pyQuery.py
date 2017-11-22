@@ -42,19 +42,21 @@ if os.path.exists(output_file_name):
 output_file = codecs.open(output_file_name,"a", "utf-8")
 
 url_base = "https://bj.lianjia.com/chengjiao/"
-region_id = "c1111027380129"
-pages = range(16)
+region = "zaojunmiao"
+sub_region_id = "c1111027380750"
+pages = range(4)
 
 for i in pages:
-    url = url_base + "pg" + str(i+1) + region_id
-    #url = 'https://bj.lianjia.com/chengjiao/pg4c1111027380129'
+    #url = url_base + region + '"/' + "pg" + str(i+1)
+    url = url_base + "pg" + str(i+1) + sub_region_id
+
     html = requests.get(url).content.decode('utf-8')
     tree = etree.HTML(html)
     li_list = tree.xpath(".//ul[@class='listContent']/li")
 
-    print(url)
-    output_file.write(url)
-    output_file.write("\n")
+    #print(url)
+    #output_file.write(url)
+    #output_file.write("\n")
 
     for li in li_list:
         info_list = pq(li).children().eq(1)
