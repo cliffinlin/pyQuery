@@ -42,13 +42,13 @@ if os.path.exists(output_file_name):
 output_file = codecs.open(output_file_name,"a", "utf-8")
 
 url_base = "https://bj.lianjia.com/chengjiao/"
-region = "zaojunmiao"
+region = "xinjiekou2"
 sub_region_id = "c1111027380750"
-pages = range(4)
+pages = range(100)
 
 for i in pages:
-    #url = url_base + region + '"/' + "pg" + str(i+1)
-    url = url_base + "pg" + str(i+1) + sub_region_id
+    url = url_base + region + '"/' + "pg" + str(i+1)
+    #url = url_base + "pg" + str(i+1) + sub_region_id
 
     html = requests.get(url).content.decode('utf-8')
     tree = etree.HTML(html)
